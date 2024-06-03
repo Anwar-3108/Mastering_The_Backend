@@ -4,6 +4,13 @@ const fs = require("fs");
 //   console.log("file created");
 // });
 
+// fs.readFile("readme.md", (err, data) => {
+//   if (err) console.log(err);
+//   else {
+//     console.log(data.toString());
+//   }
+// });
+
 // fs.appendFile("text.txt", "yess!! it is working", (err) => {
 //   if (err) console.log(err);
 //   console.log("appended text in the file ");
@@ -24,8 +31,6 @@ const fs = require("fs");
 //   console.log("removed successfully");
 // });
 
-
-
 // fs.rmdir("./copy", (err) => {
 //   if (err) console.log(err.message)
 //     else{
@@ -33,11 +38,19 @@ const fs = require("fs");
 // }
 // });
 
+// fs.rmdir("./copy", { recursive: true }, (err) => {
+//   if (err) console.log(err.message);
+//   else {
+//     console.log("removed successfully");
+//   }
+// });
 
 
-fs.rmdir("./copy", {recursive:true}, (err) => {
-  if (err) console.log(err.message)
-    else{
-console.log("removed successfully");
-}
-});
+
+// fs.mkdir('./copy',(err)=>{
+//     if (err) {
+//         console.log(err)
+//     } else {
+//         console.log("Done")
+//     }
+// })
