@@ -1,7 +1,22 @@
-const http = require('http');
+//===this will not work without SSL/TSL
 
-const server = http.createServer((req, res)=>{
-    res.end("hello world") ;
+// const https = require('node:https');
+
+// const server = https.createServer((req, res)=>{
+//     res.end("hello world") ;
+// });
+
+// server.listen(3000, ()=>{
+//     console.log("server is running on port 3000");
+// });
+
+//===this will work without SSL/TSL
+const http = require("http");
+
+const server = http.createServer((req, res) => {
+  res.end("hello world");
 });
 
-server.listen(3000);
+server.listen(3000, () => {
+  console.log("server is running on port 3000");
+});
