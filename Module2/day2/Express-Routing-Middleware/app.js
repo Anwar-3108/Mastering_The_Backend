@@ -2,6 +2,10 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
+app.use(express.json()); // Parses JSON-formatted request bodies.
+app.use(express.urlencoded({extended:true})) ;//Parses URL-encoded request bodies
+
+
 //middelware
 app.use((req, res, next) => {
   console.log("middelware chala");
