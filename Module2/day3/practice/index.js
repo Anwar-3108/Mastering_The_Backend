@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
   fs.readdir("./files", (err, files) => {
-    console.log(files);
+    // console.log(files);
     res.render("index", { files: files });
   });
 });
