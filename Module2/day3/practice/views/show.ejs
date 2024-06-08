@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Task Manager</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #F3F4F6;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+
+    .card {
+      background-color: #FFFFFF;
+      border-radius: 10px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #4B5563;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .details {
+      color: #6B7280;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    .go-back {
+      margin-top: 20px;
+      text-decoration: none;
+      color: #6B7280;
+      font-weight: bold;
+      display: block;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2 class="title">Details</h2>
+      <div class="details">
+        <%= filedata %>
+      </div>
+      <a href="/" class="go-back"> ⬅️ Go Back</a>
+    </div>
+  </div>
+</body>
+</html>
