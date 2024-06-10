@@ -31,7 +31,11 @@
           <div class="task bg-white p-6 rounded-lg shadow-md">
             <h3 class="font-semibold text-lg text-gray-700 mb-2"><%= val %></h3>
             <p class="text-gray-600 mb-4"><%= val.details %></p>
-            <a href="/files/<%=val%>" class="text-indigo-500 hover:underline">Read More</a>
+            <div class="flex gap-4 flex-wrap justify-around">
+              <a href="/files/<%=val%>" class="text-indigo-500 hover:underline">Read More</a>
+              <a href="/edit/<%=val%>" class="text-indigo-500 hover:underline">Edit File</a>
+
+            </div>
           </div>
         <% }) %>
       <% } else { %>
