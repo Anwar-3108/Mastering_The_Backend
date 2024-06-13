@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>This is Index file</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-900 text-white flex items-center justify-center min-h-screen">
+    <div class="bg-gray-800 p-8 rounded-lg shadow-md w-full max-w-md">
+      <h1 class="text-3xl font-bold mb-6 text-center text-yellow-500">Login</h1>
+      <form method="post" action="/login">
+        <div class="flex flex-col gap-4">
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            class="p-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Enter your password"
+            class="p-3 rounded-lg bg-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+          />
+          <input
+            type="submit"
+            value="Login"
+            class="bg-yellow-500 text-black p-3 rounded-lg hover:bg-yellow-600 transition-colors cursor-pointer"
+          />
+        </div>
+      </form>
+      <p class="text-center mt-4">
+        Don't have an account?
+        <a href="/" class="text-yellow-500 hover:underline">Signup</a>
+      </p>
+    </div>
+  </body>
+</html>
