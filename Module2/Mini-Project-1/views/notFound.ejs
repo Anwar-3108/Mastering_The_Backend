@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 Not Found</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .glass {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      body {
+        background: linear-gradient(
+          135deg,
+          rgba(2, 0, 36, 1) 0%,
+          rgba(9, 9, 121, 1) 35%,
+          rgba(0, 212, 255, 1) 100%
+        );
+      }
+    </style>
+  </head>
+  <body class="flex items-center justify-center min-h-screen text-white">
+    <div class="w-full max-w-md p-4">
+      <div class="glass p-8 rounded-lg shadow-lg text-center">
+        <h2 class="text-5xl font-bold mb-6">404</h2>
+        <p class="text-xl mb-6">Page Not Found</p>
+        <p class="mb-6">Sorry, the page you are looking for does not exist.</p>
+        <a
+          href="/login"
+          class="bg-yellow-500 text-black font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+        >
+          Try Again
+        </a>
+      </div>
+    </div>
+  </body>
+</html>
