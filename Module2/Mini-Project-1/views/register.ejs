@@ -3,41 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Glassmorphism Form</title>
+    <title>Register Form</title>
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
     <style>
       .glass {
-        background: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.1);
         border-radius: 16px;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.2);
       }
-      body {
-        background: linear-gradient(
-          135deg,
-          rgba(2, 0, 36, 1) 0%,
-          rgba(9, 9, 121, 1) 35%,
-          rgba(0, 212, 255, 1) 100%
-        );
-      }
+      /* body {
+        background-color: #000;
+      } */
     </style>
   </head>
-  <body class="flex items-center justify-center min-h-screen text-white">
+  <body class="flex items-center justify-center min-h-screen text-white bg-gray-900">
     <div class="w-full max-w-md p-4">
       <form
         class="glass p-8 rounded-lg shadow-lg"
         action="/register"
         method="post"
       >
-        <h2 class="text-3xl font-bold mb-6 text-center">Register</h2>
+        <h2 class="text-3xl font-bold mb-6 text-center text-yellow-500">Register</h2>
 
         <div class="mb-4">
-          <label class="block text-sm font-bold mb-2" for="name">Name</label>
+          <label class="block text-sm font-bold mb-2 text-white" for="name">Name</label>
           <input
             class="w-full px-3 py-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
             type="text"
@@ -48,7 +43,7 @@
         </div>
 
         <div class="mb-4">
-          <label class="block text-sm font-bold mb-2" for="username">Username</label>
+          <label class="block text-sm font-bold mb-2 text-white" for="username">Username</label>
           <input
             class="w-full px-3 py-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
             type="text"
@@ -59,7 +54,7 @@
         </div>
 
         <div class="mb-4">
-          <label class="block text-sm font-bold mb-2" for="password">Password</label>
+          <label class="block text-sm font-bold mb-2 text-white" for="password">Password</label>
           <input
             class="w-full px-3 py-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
             type="password"
@@ -70,7 +65,7 @@
         </div>
 
         <div class="mb-4">
-          <label class="block text-sm font-bold mb-2" for="email">Email</label>
+          <label class="block text-sm font-bold mb-2 text-white" for="email">Email</label>
           <input
             class="w-full px-3 py-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
             type="email"
@@ -81,7 +76,7 @@
         </div>
 
         <div class="mb-4">
-          <label class="block text-sm font-bold mb-2" for="age">Age</label>
+          <label class="block text-sm font-bold mb-2 text-white" for="age">Age</label>
           <input
             class="w-full px-3 py-2 text-black rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500"
             type="number"

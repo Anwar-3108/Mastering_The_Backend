@@ -31,7 +31,7 @@ const isLoggedIn = require("./Middleware/authMiddleware");
 
 //======= Routes ==========//
 app.get("/", isLoggedIn, async (req, res) => {
-  let user = await userModel.findOne({ email: res.userData.email });
+  let user = await userModel.findOne({ email: res.userData.email }).populate("posts");
 
   res.render("index", { user });
 });
@@ -88,6 +88,19 @@ app.post("/login", async (req, res) => {
 
 app.get("/login", (req, res) => {
   res.render("login");
+});
+
+app.post("/post", isLoggedIn, async (req, res) => {
+  let user = await userModel.findOne({ email: res.userData.email });
+  let { content } = req.body;
+  let post = await postModel.create({
+    user: user._id,
+    content: content,
+  });
+
+  user.posts.push(post._id);
+  await user.save();
+  res.redirect("/");
 });
 
 //======= Routes ==========//
