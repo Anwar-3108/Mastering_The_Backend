@@ -6,7 +6,7 @@ function isLoggedIn(req, res, next) {
   if (req.cookies.token) {
     try {
       let userData = jwt.verify(req.cookies.token, "lolopopo");
-      console.log(userData);
+      // console.log(userData);
       res.userData = userData;
       next();
     } catch (error) {

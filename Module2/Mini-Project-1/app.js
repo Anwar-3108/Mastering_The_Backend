@@ -26,14 +26,42 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 //==============//
 const isLoggedIn = require("./Middleware/authMiddleware");
+const user = require("./models/user");
 
 //======= Middelwares ==========//
 
 //======= Routes ==========//
 app.get("/", isLoggedIn, async (req, res) => {
-  let user = await userModel.findOne({ email: res.userData.email }).populate("posts");
+  let user = await userModel
+    .findOne({ email: res.userData.email })
+    .populate("posts");
 
   res.render("index", { user });
+});
+app.get("/edit/:id", isLoggedIn, async (req, res) => {
+  let post = await postModel.findOne({ _id: req.params.id });
+
+  res.render("edit", { post });
+});
+app.post("/update/:id", isLoggedIn, async (req, res) => {
+  let post = await postModel.findOneAndUpdate(
+    { _id: req.params.id },
+    { content: req.body.content }
+  );
+
+  res.redirect("/");
+});
+
+app.get("/like/:id", isLoggedIn, async (req, res) => {
+  let post = await postModel.findOne({ _id: req.params.id }).populate("user");
+  if (post.likes.indexOf(res.userData.userid) === -1) {
+    post.likes.push(res.userData.userid);
+  } else {
+    post.likes.splice(post.likes.indexOf(res.userData.userid), 1);
+  }
+  await post.save();
+  res.redirect("/");
+  // console.log(res.userData.userid)
 });
 app.get("/notFound", (req, res) => {
   res.render("notFound");
