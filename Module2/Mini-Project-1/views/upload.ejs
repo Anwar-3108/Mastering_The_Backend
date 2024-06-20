@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload Image Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .glass {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+    </style>
+  </head>
+  <body
+    class="flex items-center justify-center min-h-screen text-white bg-gray-900"
+  >
+    <div class="w-full max-w-2xl p-4">
+      <div class="glass p-8 rounded-lg shadow-lg mb-8">
+        <h2 class="text-3xl font-bold text-yellow-500 mb-6">Upload Image</h2>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+          <div class="mb-4">
+            <label for="image" class="block text-xl mb-2 text-white"
+              >Select Image</label
+            >
+            <input
+              required
+              type="file"
+              name="image"
+              id="image"
+              accept="image/*"
+              class="block w-full text-lg text-gray-700 bg-gray-200 rounded-lg border border-gray-300 cursor-pointer focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:border-transparent"
+            />
+          </div>
+          <button
+            type="submit"
+            class="bg-yellow-500 text-black font-bold py-2 px-4 rounded-lg hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

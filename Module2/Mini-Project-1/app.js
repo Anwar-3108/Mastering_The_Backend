@@ -5,6 +5,8 @@ const cookieParser = require("cookie-parser");
 const path = require("path");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
+const multer = require("multer");
 //==============//
 const userModel = require("./models/user");
 const postModel = require("./models/post");
@@ -26,9 +28,26 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 //==============//
 const isLoggedIn = require("./Middleware/authMiddleware");
-const user = require("./models/user");
+// const user = require("./models/user");
 
 //======= Middelwares ==========//
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "./public/images/uploads");
+    // cb(null, "../../Module2");
+  },
+  filename: function (req, file, cb) {
+    // const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+    crypto.randomBytes(12, (err, bytes) => {
+      // console.log(bytes.toString("hex"));
+      const fn = bytes.toString("hex") + path.extname(file.originalname);
+      cb(null, fn);
+    });
+  },
+});
+
+const upload = multer({ storage: storage });
 
 //======= Routes ==========//
 app.get("/", isLoggedIn, async (req, res) => {
@@ -51,7 +70,6 @@ app.post("/update/:id", isLoggedIn, async (req, res) => {
 
   res.redirect("/");
 });
-
 app.get("/like/:id", isLoggedIn, async (req, res) => {
   let post = await postModel.findOne({ _id: req.params.id }).populate("user");
   if (post.likes.indexOf(res.userData.userid) === -1) {
@@ -129,6 +147,15 @@ app.post("/post", isLoggedIn, async (req, res) => {
   user.posts.push(post._id);
   await user.save();
   res.redirect("/");
+});
+
+app.get("/upload", isLoggedIn, (req, res) => {
+  res.render("upload");
+});
+
+app.post("/upload", isLoggedIn, upload.single("image"), (req, res) => {
+  console.log(req.file);
+  res.redirect('/')
 });
 
 //======= Routes ==========//
