@@ -32,11 +32,17 @@
     </div>
     <div class="w-full max-w-2xl p-4">
       <div class="glass p-2 rounded-lg shadow-lg text-center mb-8">
+        <img
+          src="/images/uploads/<%=user.profilepic%>"
+          alt="Profile Picture"
+          class="w-24 h-24 rounded-full mx-auto mb-4"
+        />
         <h1 class="text-4xl font-bold text-yellow-500 mb-6">
           Welcome to Our Website
         </h1>
         <p class="text-xl mb-6 text-white">Hello, <%= user.name %>!</p>
       </div>
+      
       <div class="glass p-8 rounded-lg shadow-lg mb-8">
         <h2 class="text-3xl font-bold text-yellow-500 mb-6">
           Create a New Blog

@@ -1,5 +1,3 @@
-// middleware/authMiddleware.js
-
 const jwt = require('jsonwebtoken');
 
 function isLoggedIn(req, res, next) {

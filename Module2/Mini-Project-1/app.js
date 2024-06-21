@@ -10,6 +10,7 @@ const multer = require("multer");
 //==============//
 const userModel = require("./models/user");
 const postModel = require("./models/post");
+const upload = require("./config/multerconfig");
 
 //======= Imports ==========//
 
@@ -32,22 +33,22 @@ const isLoggedIn = require("./Middleware/authMiddleware");
 
 //======= Middelwares ==========//
 
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "./public/images/uploads");
-    // cb(null, "../../Module2");
-  },
-  filename: function (req, file, cb) {
-    // const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    crypto.randomBytes(12, (err, bytes) => {
-      // console.log(bytes.toString("hex"));
-      const fn = bytes.toString("hex") + path.extname(file.originalname);
-      cb(null, fn);
-    });
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, "./public/images/uploads");
+//     // cb(null, "../../Module2");
+//   },
+//   filename: function (req, file, cb) {
+//     // const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+//     crypto.randomBytes(12, (err, bytes) => {
+//       // console.log(bytes.toString("hex"));
+//       const fn = bytes.toString("hex") + path.extname(file.originalname);
+//       cb(null, fn);
+//     });
+//   },
+// });
 
-const upload = multer({ storage: storage });
+// const upload = multer({ storage: storage });
 
 //======= Routes ==========//
 app.get("/", isLoggedIn, async (req, res) => {
@@ -110,7 +111,7 @@ app.post("/register", async (req, res) => {
       });
       let token = jwt.sign({ email: email, userid: user._id }, "lolopopo");
       res.cookie("token", token);
-      res.redirect("/login");
+      res.redirect("/upload");
     });
   });
 });
@@ -153,10 +154,14 @@ app.get("/upload", isLoggedIn, (req, res) => {
   res.render("upload");
 });
 
-app.post("/upload", isLoggedIn, upload.single("image"), (req, res) => {
+app.post("/upload", isLoggedIn, upload.single("image"), async (req, res) => {
+  let user =await userModel.findOne({ email: res.userData.email  });
+  user.profilepic = req.file.filename;
+  await user.save();
   console.log(req.file);
-  res.redirect('/')
-});
+  console.log(res.userData.email )
+  res.redirect("/login");
+}); 
 
 //======= Routes ==========//
 
