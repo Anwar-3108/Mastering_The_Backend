@@ -1,3 +1,4 @@
+require("dotenv").config();
 const mongoose = require("mongoose");
 const config = require("config");
 const debug = require("debug")("development:mongoose");
@@ -5,9 +6,10 @@ const debug = require("debug")("development:mongoose");
 mongoose
   .connect(`${config.get("MONGODB_URI")}/scatch`)
   .then(() => {
-    debug(" database connected");
+    debug("Database connected");
   })
   .catch((err) => {
-    debug(err);
+    debug("Error connecting to the database:", err);
   });
+
 module.exports = mongoose.connection;
